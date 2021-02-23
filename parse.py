@@ -26,14 +26,10 @@ printYesNo = False
 
 i = 0
 
-print(titles)
 for title in titles:
 
-    print("title loop")
     for showName in showNameList:
-        print("showname loop")
         if showName in title and "Dub" not in title:
-            print("showname loop if")
             printYesNo = True
             titleTagged = "<title>" + title + "</title>"
             descriptionTagged = "<description>" + descriptions[i] + "</description>"
@@ -45,24 +41,15 @@ for title in titles:
     if printYesNo == True:
         dateTime = datetime.datetime.now().strftime("%y%m%d%H%M%S%f")
         fileName = "items/crunchyroll/" + dateTime + "_" +  showName
-        print(
-                rssOpen,
-                titleTagged, 
-                rssLink,
-                guidTagged,
-                descriptionTagged,  
-                pubDateTagged ,
-                rssClose,
-                sep='\n')
 
-        #with open(fileName, "w") as outFile:
-            #outFile.write(
-                #rssOpen + "\n" +
-                #titleTagged  + "\n" +
-                #rssLink + "\n" + 
-                #guidTagged + "\n" + 
-                #descriptionTagged + "\n" + 
-                #pubDateTagged + "\n" + 
-                #rssClose + "\n")
+        with open(fileName, "w") as outFile:
+            outFile.write(
+                rssOpen + "\n" +
+                titleTagged  + "\n" +
+                rssLink + "\n" + 
+                guidTagged + "\n" + 
+                descriptionTagged + "\n" + 
+                pubDateTagged + "\n" + 
+                rssClose + "\n")
     i = i + 1
     printYesNo = False
